@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <!-- TODO: Replace with your paper title and author names -->
+  <meta name="title" content="RDD: Retrieval-Based Demonstration Decomposer for Planner Alignment in Long-Horizon Tasks - Mingxuan Yan, Yuping Wang, Zechun Liu, Jiachen Li">
+  <!-- TODO: Write a compelling 150-160 character description of your research -->
+  <meta name="description" content="A training-free method that automatically decomposes demonstrations into sub-tasks by aligning visual features with low-level visuomotor policy training data for improved hierarchical robot learning.">
+  <!-- TODO: Add 5-10 relevant keywords for your research area -->
+  <meta name="keywords" content="robotics, hierarchical learning, vision-language-action models, demonstration decomposition, retrieval-based learning, visuomotor policy, machine learning, computer vision, AI">
+  <!-- TODO: List all authors -->
+  <meta name="author" content="Mingxuan Yan, Yuping Wang, Zechun Liu, Jiachen Li">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="RDD: Retrieval-Based Demonstration Decomposer for Planner Alignment in Long-Horizon Tasks">
+  <meta name="citation_author" content="Yan, Mingxuan">
+  <meta name="citation_author" content="Wang, Yuping">
+  <meta name="citation_publication_date" content="2024">
+  <meta name="citation_conference_title" content="CONFERENCE_NAME">
+  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <!-- TODO: Replace with your paper title and authors -->
+  <title>RDD: Retrieval-Based Demonstration Decomposer for Planner Alignment in Long-Horizon Tasks - Mingxuan Yan, Yuping Wang, Zechun Liu, Jiachen Li | Academic Research</title>
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/tasl.ico">
+  <link rel="apple-touch-icon" href="static/images/tasl.ico">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "RDD: Retrieval-Based Demonstration Decomposer for Planner Alignment in Long-Horizon Tasks",
+    "description": "A training-free method that automatically decomposes demonstrations into sub-tasks by aligning visual features with low-level visuomotor policy training data for improved hierarchical robot learning.",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Mingxuan Yan",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "University of California, Riverside"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Yuping Wang",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "University of California, Riverside"
+        }
+      }
+    ],
+    "datePublished": "2024-01-01",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CONFERENCE_OR_JOURNAL_NAME"
+    },
+    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
+    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "keywords": ["robotics", "hierarchical learning", "vision-language-action models", "demonstration decomposition", "machine learning", "computer vision"],
+    "abstract": "To enable robots to achieve long-horizon tasks, recent hierarchical vision-language-action (VLAs) frameworks typically employ vision-language model (VLM)-based planners to decompose complex manipulation tasks into simpler sub-tasks that low-level visuomotor policies can easily handle. To finetune the VLM planner and let it learn to decompose the target task, a few human demonstrations are segmented into sub-tasks by either human annotation or heuristic rules. The heuristic sub-tasks can deviate significantly from the training data of the visuomotor policy, which degrades task performance. To address these issues, we propose a Retrieval-based Demonstration Decomposer (RDD) that automatically decomposes demonstrations into sub-tasks by aligning the visual features of decomposed sub-task intervals with the training data of low-level visuomotor policies to fully exploit its capability.",
+    "citation": "@article{yan2024rdd, title={RDD: Retrieval-Based Demonstration Decomposer for Planner Alignment in Long-Horizon Tasks}, author={Yan, Mingxuan and Wang, Yuping and Liu, Zechun and Li, Jiachen}, journal={Preprint. Under review.}, year={2024}}",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "RESEARCH_AREA_1"
+      },
+      {
+        "@type": "Thing", 
+        "name": "RESEARCH_AREA_2"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "University of California, Riverside",
+    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
+    "logo": "https://YOUR_DOMAIN.com/static/images/tasl.ico",
+    "sameAs": [
+      "https://twitter.com/YOUR_TWITTER_HANDLE",
+      "https://github.com/YOUR_GITHUB_USERNAME"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- More Works Link -->
+  <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
+    <a href="https://tasl.ucr.edu/publications/" target="_blank"
+       class="external-link button is-normal is-rounded is-primary"
+       style="font-weight: 500;">
+      <span class="icon">
+        <i class="fas fa-flask"></i>
+      </span>
+      <span>More Works</span>
+    </a>
+  </div>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-widescreen">
+        <div class="columns is-centered">
+          <div class="column is-12 has-text-centered">
+            <!-- TODO: Replace with your paper title -->
+            <h1 class="title is-2 publication-title">RDD: Retrieval-Based Demonstration Decomposer<br><span class="is-size-4" style="font-style: italic; font-weight: 400; color: #666; font-family: 'Inter', sans-serif;">for Planner Alignment in Long-Horizon Tasks</span></h1>
+            <div class="is-size-5" style="margin-top: 15px; margin-bottom: 20px;">
+              <span style="font-weight: 600;">NeurIPS 2025, San Diego</span>
+            </div>
+            <div class="is-size-5 publication-authors">
+              <!-- TODO: Replace with your paper authors and their personal links -->
+              <span class="author-block">
+                <a href="https://waterhyacinthinnanhu.github.io/" target="_blank">Mingxuan Yan</a><sup>1</sup>,</span>
+                <span class="author-block">
+                  <a href="https://www.linkedin.com/in/yuping-wang-5a7178185/" target="_blank">Yuping Wang</a><sup>1,2</sup>,</span>
+                  <span class="author-block">
+                    <a href="https://zechunliu.com/" target="_blank">Zechun Liu</a><sup>3</sup>,</span>
+                  <span class="author-block">
+                    <a href="https://jiachenli94.github.io/" target="_blank">Jiachen Li</a><sup>1*</sup>
+                  </span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block"><sup>1</sup>University of California, Riverside &nbsp;&nbsp; <sup>2</sup>University of Michigan<br></span> &nbsp;&nbsp; <sup>3</sup>Meta AI</span>
+                    <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding author</small></span>
+                    <br>
+                    <span class="author-block" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
+                      <img src="static/images/tasl.svg" alt="TASL Lab Logo" style="height: 20px; width: auto;">
+                      <a href="https://tasl.ucr.edu/" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: underline;">
+                        Trustworthy Autonomous Systems Laboratory (TASL)
+                      </a>
+                    </span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                      <span class="link-block">
+                        <a href="https://openreview.net/pdf?id=zY5J1vp7tZ"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                  <span class="link-block">
+                    <a href="https://github.com/tasl-lab/Retrieval-Demonstration-Decomposer"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Teaser video-->
+<section class="hero teaser">
+  <div class="container is-max-widescreen">
+    <div class="hero-body">
+      <h1 class="title is-3 has-text-centered" style="margin-bottom: 30px;">Can We Identify Sub-tasks Similar to the Expert-Labeled Ones?</h1>
+      <!-- Video embed -->
+      <div style="max-width: 100%; margin-bottom: 30px;">
+        <video style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto;"
+               controls
+               preload="metadata">
+          <source src="./static/videos/demo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <!-- Qualitative results image -->
+      <img src="static/images/qualitative.png" alt="Qualitative results showing RDD performance" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto;">
+      <h2 class="subtitle has-text-justified">
+        Qualitative results of RDD and <a href="https://arxiv.org/pdf/2310.08581" target="_blank" style="color: #3273dc; text-decoration: underline;">UVD</a> when decomposing real-world and simulation benchmarks. RDD robustly identifies sub-tasks that are close to expert sub-task decompositions, while UVD fails to locate keyframes precisely.
+      </h2>
+      <!-- YouTube video embed -->
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 30px; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+        <iframe
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;"
+          src="https://www.youtube.com/embed/bwCgUyqdT6s"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End teaser video -->
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <!-- TODO: Replace with your paper abstract -->
+          <p>
+            To tackle long-horizon tasks, recent hierarchical vision-language-action (VLAs) frameworks employ vision-language model (VLM)-based planners to decompose complex manipulation tasks into simpler sub-tasks that low-level visuomotor policies can easily handle. Typically, the VLM planner is finetuned to learn to decompose a target task. This finetuning requires target task demonstrations segmented into sub-tasks by either human annotation or heuristic rules. However, the heuristic subtasks can deviate significantly from the training data of the visuomotor policy, which degrades task performance. 
+To address these issues, we propose a <strong>R</strong>etrieval-based <strong>D</strong>emonstration <strong>D</strong>ecomposer <strong>RDD</strong> that automatically decomposes demonstrations into sub-tasks by aligning the visual features of the decomposed sub-task intervals with those from the training data of the low-level visuomotor policies. Our method demonstrates superior performance compared to the state-of-the-art sub-task decomposer on both simulation and real-world demonstrations, showcasing robustness across various settings.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+
+<!-- Method Overview Section -->
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">The Planner-Visuomotor Dataset Misalignment Problem</h2>
+        <div class="content has-text-justified">
+          <img src="static/images/teaser.png" alt="Teaser overview of RDD method" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto 20px auto;"/>
+          <p>
+            <strong>The planner-visuomotor dataset misalignment problem:</strong>
+            In hierarchical VLAs, the planner, often a powerful VLM, performs task planning and reasoning to break down complex tasks into simpler sub-tasks with step-by-step language instructions. 
+            Conditioned on the generated sub-task instructions, a learning-based visuomotor policy, trained on datasets with short-horizon sub-tasks, 
+            performs precise manipulation to complete the sub-tasks one by one, thereby completing long-horizon tasks.
+            <br>
+              A VLM planner typically needs to be finetuned with demonstrations of a given task, where 
+            <u>
+              demonstrations are temporally decomposed to sub-tasks by human annotation or heuristics.
+            </u>
+            <br>
+            The planner-visuomotor dataset misaligning problem is illustrated in the firgure:
+            (a) Two sub-tasks appear in the visuomotor policy's training set, on which the
+            policy has been optimized.
+            (b) Existing sub-task decomposers, such as UVD, 
+            <u>
+            use heuristic decomposition
+            rules and may generate "unfamiliar" sub-tasks that are difficult to handle for the low-level visuomotor policy.
+            </u>
+            <br>
+            <strong>Core idea of RDD:</strong>
+            As shown in (c), 
+            <u>
+            RDD decomposes the demonstration into sub-tasks that are visually similar to the ones in the
+            training set of the visuomotor policy. 
+            </u>
+            The sub-tasks are then used to finetune the high-level planner, which will generate
+            sub-task instructions that are "familar" to the low-level visuomotor policy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End method overview -->
+
+<!-- Method Architecture Section -->
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Retrival-Based Demonstration Decomposer</h2>
+        <div class="content has-text-justified">
+          <img src="static/images/method.png" alt="RDD method overview and architecture" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto 20px auto;"/>
+          <p>
+            RDD formulates demonstration decomposition as an optimal partitioning problem, using retrieval with approximate nearest neighbor search (ANNS) and dynamic programming to efficiently find the optimal decomposition strategy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End method architecture -->
+
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">
+          Improves End-to-End Performance of Hierarchical VLA
+        </h2></h2>
+        <div class="content has-text-justified">
+          <img src="static/images/main-results.png" alt="RDD method overview and architecture" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto 20px auto;"/>
+          <p>
+           Results are averaged over 10 random seeds. RDD improves the end-to-end performance of the hierarchical VLA <a href="https://arxiv.org/pdf/2409.14674" target="_blank" style="color: #3273dc; text-decoration: underline;">RACER</a> and achieves a near-oracle performance and only compromises the success rate of merely 0.2% compared with the expert decomposer
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">
+          Real-World & Out-of-Distribution Demonstrations
+        </h2></h2>
+        <div class="content has-text-justified">
+          <img src="static/images/realworld-ood.png" alt="rdd-realworld-ood" style="max-width: 40%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto 20px auto;"/>
+          <p>
+           Performance (IoU) on <a href="https://huggingface.co/datasets/agibot-world/AgiBotWorld-Alpha" target="_blank" style="color: #3273dc; text-decoration: underline;">AgiBotWorld-Alpha</a> (real-world)
+          and <a href="https://huggingface.co/datasets/qiukingballball/RoboCerebra" target="_blank" style="color: #3273dc; text-decoration: underline;">RoboCerebra</a> (out-of-distribution sub-tasks)
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">
+          Scalability
+        </h2></h2>
+        <div class="content has-text-justified">
+          <img src="static/images/runtime_comparison.png" alt="speed" style="max-width: 40%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto 20px auto;"/>
+          <p>
+           Linear time complexity of RDD with bounded maximum sub-task duration. Experiment uses a single CPU core (AMD EPYC 9254).
+             We also provide a conceptual speed evaluation of RDD when working with the GPU-accelerated ANNS method <a href="https://github.com/facebookresearch/faiss" target="_blank" style="color: #3273dc; text-decoration: underline;">FAISS</a>. For details please refer to our paper.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <pre id="bibtex-code"><code>@inproceedings{yan2025rdd,
+  title={RDD: Retrieval-Based Demonstration Decomposer for Planner Alignment in Long-Horizon Tasks},
+  author={Yan, Mingxuan and Wang, Yuping and Liu, Zechun and Li, Jiachen},
+  booktitle={Proceedings of the 39th Annual Conference on Neural Information Processing Systems (NeurIPS)},
+  year={2025},
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
