@@ -40,7 +40,7 @@
 
 
   <!-- TODO: Replace with your paper title and authors -->
-  <title>RDD: Retrieval-Based Demonstration Decomposer for Planner Alignment in Long-Horizon Tasks - Mingxuan Yan, Yuping Wang, Zechun Liu, Jiachen Li | Academic Research</title>
+  <title>SyncTwin: Retrieval-Based Demonstration Decomposer for Planner Alignment in Long-Horizon Tasks - Mingxuan Yan, Yuping Wang, Zechun Liu, Jiachen Li | Academic Research</title>
   <!-- Favicon and App Icons -->
   <link rel="icon" type="image/x-icon" href="static/images/tasl.ico">
   <link rel="apple-touch-icon" href="static/images/tasl.ico">
@@ -107,8 +107,8 @@
     "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
     "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
     "keywords": ["robotics", "hierarchical learning", "vision-language-action models", "demonstration decomposition", "machine learning", "computer vision"],
-    "abstract": "To enable robots to achieve long-horizon tasks, recent hierarchical vision-language-action (VLAs) frameworks typically employ vision-language model (VLM)-based planners to decompose complex manipulation tasks into simpler sub-tasks that low-level visuomotor policies can easily handle. To finetune the VLM planner and let it learn to decompose the target task, a few human demonstrations are segmented into sub-tasks by either human annotation or heuristic rules. The heuristic sub-tasks can deviate significantly from the training data of the visuomotor policy, which degrades task performance. To address these issues, we propose a Retrieval-based Demonstration Decomposer (RDD) that automatically decomposes demonstrations into sub-tasks by aligning the visual features of decomposed sub-task intervals with the training data of low-level visuomotor policies to fully exploit its capability.",
-    "citation": "@article{yan2024rdd, title={RDD: Retrieval-Based Demonstration Decomposer for Planner Alignment in Long-Horizon Tasks}, author={Yan, Mingxuan and Wang, Yuping and Liu, Zechun and Li, Jiachen}, journal={Preprint. Under review.}, year={2024}}",
+    "abstract": "To enable robots to achieve long-horizon tasks, recent hierarchical vision-language-action (VLAs) frameworks typically employ vision-language model (VLM)-based planners to decompose complex manipulation tasks into simpler sub-tasks that low-level visuomotor policies can easily handle. To finetune the VLM planner and let it learn to decompose the target task, a few human demonstrations are segmented into sub-tasks by either human annotation or heuristic rules. The heuristic sub-tasks can deviate significantly from the training data of the visuomotor policy, which degrades task performance. To address these issues, we propose a Retrieval-based Demonstration Decomposer (SyncTwin) that automatically decomposes demonstrations into sub-tasks by aligning the visual features of decomposed sub-task intervals with the training data of low-level visuomotor policies to fully exploit its capability.",
+    "citation": "@article{yan2024SyncTwin, title={SyncTwin: Retrieval-Based Demonstration Decomposer for Planner Alignment in Long-Horizon Tasks}, author={Yan, Mingxuan and Wang, Yuping and Liu, Zechun and Li, Jiachen}, journal={Preprint. Under review.}, year={2024}}",
     "isAccessibleForFree": true,
     "license": "https://creativecommons.org/licenses/by/4.0/",
     "mainEntity": {
@@ -170,7 +170,7 @@
         <div class="columns is-centered">
           <div class="column is-12 has-text-centered">
             <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-2 publication-title">RDD: Retrieval-Based Demonstration Decomposer<br><span class="is-size-4" style="font-style: italic; font-weight: 400; color: #666; font-family: 'Inter', sans-serif;">for Planner Alignment in Long-Horizon Tasks</span></h1>
+            <h1 class="title is-2 publication-title">SyncTwin: Retrieval-Based Demonstration Decomposer<br><span class="is-size-4" style="font-style: italic; font-weight: 400; color: #666; font-family: 'Inter', sans-serif;">for Planner Alignment in Long-Horizon Tasks</span></h1>
             <div class="is-size-5" style="margin-top: 15px; margin-bottom: 20px;">
               <span style="font-weight: 600;">NeurIPS 2025, San Diego</span>
             </div>
@@ -244,9 +244,9 @@
         </video>
       </div>
       <!-- Qualitative results image -->
-      <img src="static/images/qualitative.png" alt="Qualitative results showing RDD performance" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto;">
+      <img src="static/images/qualitative.png" alt="Qualitative results showing SyncTwin performance" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto;">
       <h2 class="subtitle has-text-justified">
-        Qualitative results of RDD and <a href="https://arxiv.org/pdf/2310.08581" target="_blank" style="color: #3273dc; text-decoration: underline;">UVD</a> when decomposing real-world and simulation benchmarks. RDD robustly identifies sub-tasks that are close to expert sub-task decompositions, while UVD fails to locate keyframes precisely.
+        Qualitative results of SyncTwin and <a href="https://arxiv.org/pdf/2310.08581" target="_blank" style="color: #3273dc; text-decoration: underline;">UVD</a> when decomposing real-world and simulation benchmarks. SyncTwin robustly identifies sub-tasks that are close to expert sub-task decompositions, while UVD fails to locate keyframes precisely.
       </h2>
       <!-- YouTube video embed -->
       <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-bottom: 30px; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
@@ -273,7 +273,7 @@
           <!-- TODO: Replace with your paper abstract -->
           <p>
             To tackle long-horizon tasks, recent hierarchical vision-language-action (VLAs) frameworks employ vision-language model (VLM)-based planners to decompose complex manipulation tasks into simpler sub-tasks that low-level visuomotor policies can easily handle. Typically, the VLM planner is finetuned to learn to decompose a target task. This finetuning requires target task demonstrations segmented into sub-tasks by either human annotation or heuristic rules. However, the heuristic subtasks can deviate significantly from the training data of the visuomotor policy, which degrades task performance. 
-To address these issues, we propose a <strong>R</strong>etrieval-based <strong>D</strong>emonstration <strong>D</strong>ecomposer <strong>RDD</strong> that automatically decomposes demonstrations into sub-tasks by aligning the visual features of the decomposed sub-task intervals with those from the training data of the low-level visuomotor policies. Our method demonstrates superior performance compared to the state-of-the-art sub-task decomposer on both simulation and real-world demonstrations, showcasing robustness across various settings.
+To address these issues, we propose a <strong>R</strong>etrieval-based <strong>D</strong>emonstration <strong>D</strong>ecomposer <strong>SyncTwin</strong> that automatically decomposes demonstrations into sub-tasks by aligning the visual features of the decomposed sub-task intervals with those from the training data of the low-level visuomotor policies. Our method demonstrates superior performance compared to the state-of-the-art sub-task decomposer on both simulation and real-world demonstrations, showcasing robustness across various settings.
           </p>
         </div>
       </div>
@@ -290,7 +290,7 @@ To address these issues, we propose a <strong>R</strong>etrieval-based <strong>D
       <div class="column is-four-fifths">
         <h2 class="title is-3">The Planner-Visuomotor Dataset Misalignment Problem</h2>
         <div class="content has-text-justified">
-          <img src="static/images/teaser.png" alt="Teaser overview of RDD method" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto 20px auto;"/>
+          <img src="static/images/teaser.png" alt="Teaser overview of SyncTwin method" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto 20px auto;"/>
           <p>
             <strong>The planner-visuomotor dataset misalignment problem:</strong>
             In hierarchical VLAs, the planner, often a powerful VLM, performs task planning and reasoning to break down complex tasks into simpler sub-tasks with step-by-step language instructions. 
@@ -311,10 +311,10 @@ To address these issues, we propose a <strong>R</strong>etrieval-based <strong>D
             rules and may generate "unfamiliar" sub-tasks that are difficult to handle for the low-level visuomotor policy.
             </u>
             <br>
-            <strong>Core idea of RDD:</strong>
+            <strong>Core idea of SyncTwin:</strong>
             As shown in (c), 
             <u>
-            RDD decomposes the demonstration into sub-tasks that are visually similar to the ones in the
+            SyncTwin decomposes the demonstration into sub-tasks that are visually similar to the ones in the
             training set of the visuomotor policy. 
             </u>
             The sub-tasks are then used to finetune the high-level planner, which will generate
@@ -334,9 +334,9 @@ To address these issues, we propose a <strong>R</strong>etrieval-based <strong>D
       <div class="column is-four-fifths">
         <h2 class="title is-3">Retrival-Based Demonstration Decomposer</h2>
         <div class="content has-text-justified">
-          <img src="static/images/method.png" alt="RDD method overview and architecture" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto 20px auto;"/>
+          <img src="static/images/method.png" alt="SyncTwin method overview and architecture" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto 20px auto;"/>
           <p>
-            RDD formulates demonstration decomposition as an optimal partitioning problem, using retrieval with approximate nearest neighbor search (ANNS) and dynamic programming to efficiently find the optimal decomposition strategy.
+            SyncTwin formulates demonstration decomposition as an optimal partitioning problem, using retrieval with approximate nearest neighbor search (ANNS) and dynamic programming to efficiently find the optimal decomposition strategy.
           </p>
         </div>
       </div>
@@ -355,9 +355,9 @@ To address these issues, we propose a <strong>R</strong>etrieval-based <strong>D
           Improves End-to-End Performance of Hierarchical VLA
         </h2></h2>
         <div class="content has-text-justified">
-          <img src="static/images/main-results.png" alt="RDD method overview and architecture" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto 20px auto;"/>
+          <img src="static/images/main-results.png" alt="SyncTwin method overview and architecture" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto 20px auto;"/>
           <p>
-           Results are averaged over 10 random seeds. RDD improves the end-to-end performance of the hierarchical VLA <a href="https://arxiv.org/pdf/2409.14674" target="_blank" style="color: #3273dc; text-decoration: underline;">RACER</a> and achieves a near-oracle performance and only compromises the success rate of merely 0.2% compared with the expert decomposer
+           Results are averaged over 10 random seeds. SyncTwin improves the end-to-end performance of the hierarchical VLA <a href="https://arxiv.org/pdf/2409.14674" target="_blank" style="color: #3273dc; text-decoration: underline;">RACER</a> and achieves a near-oracle performance and only compromises the success rate of merely 0.2% compared with the expert decomposer
           </p>
         </div>
       </div>
@@ -374,7 +374,7 @@ To address these issues, we propose a <strong>R</strong>etrieval-based <strong>D
           Real-World & Out-of-Distribution Demonstrations
         </h2></h2>
         <div class="content has-text-justified">
-          <img src="static/images/realworld-ood.png" alt="rdd-realworld-ood" style="max-width: 40%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto 20px auto;"/>
+          <img src="static/images/realworld-ood.png" alt="SyncTwin-realworld-ood" style="max-width: 40%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto 20px auto;"/>
           <p>
            Performance (IoU) on <a href="https://huggingface.co/datasets/agibot-world/AgiBotWorld-Alpha" target="_blank" style="color: #3273dc; text-decoration: underline;">AgiBotWorld-Alpha</a> (real-world)
           and <a href="https://huggingface.co/datasets/qiukingballball/RoboCerebra" target="_blank" style="color: #3273dc; text-decoration: underline;">RoboCerebra</a> (out-of-distribution sub-tasks)
@@ -397,8 +397,8 @@ To address these issues, we propose a <strong>R</strong>etrieval-based <strong>D
         <div class="content has-text-justified">
           <img src="static/images/runtime_comparison.png" alt="speed" style="max-width: 40%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1); display: block; margin: 0 auto 20px auto;"/>
           <p>
-           Linear time complexity of RDD with bounded maximum sub-task duration. Experiment uses a single CPU core (AMD EPYC 9254).
-             We also provide a conceptual speed evaluation of RDD when working with the GPU-accelerated ANNS method <a href="https://github.com/facebookresearch/faiss" target="_blank" style="color: #3273dc; text-decoration: underline;">FAISS</a>. For details please refer to our paper.
+           Linear time complexity of SyncTwin with bounded maximum sub-task duration. Experiment uses a single CPU core (AMD EPYC 9254).
+             We also provide a conceptual speed evaluation of SyncTwin when working with the GPU-accelerated ANNS method <a href="https://github.com/facebookresearch/faiss" target="_blank" style="color: #3273dc; text-decoration: underline;">FAISS</a>. For details please refer to our paper.
           </p>
         </div>
       </div>
@@ -422,8 +422,8 @@ To address these issues, we propose a <strong>R</strong>etrieval-based <strong>D
           <span class="copy-text">Copy</span>
         </button>
       </div>
-      <pre id="bibtex-code"><code>@inproceedings{yan2025rdd,
-  title={RDD: Retrieval-Based Demonstration Decomposer for Planner Alignment in Long-Horizon Tasks},
+      <pre id="bibtex-code"><code>@inproceedings{yan2025SyncTwin,
+  title={SyncTwin: Retrieval-Based Demonstration Decomposer for Planner Alignment in Long-Horizon Tasks},
   author={Yan, Mingxuan and Wang, Yuping and Liu, Zechun and Li, Jiachen},
   booktitle={Proceedings of the 39th Annual Conference on Neural Information Processing Systems (NeurIPS)},
   year={2025},
