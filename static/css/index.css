@@ -52,6 +52,7 @@ sup { font-size: .7em; margin-left: .15em; }
 .affiliations a { color: var(--text-primary); }
 .affiliations a:hover { text-decoration: underline; }
 .author-note { max-width: 760px; margin: .9rem auto 1.25rem; color: var(--text-secondary); font-size: .85rem; }
+.lab-link { margin: 0 auto 1.25rem; text-align: center; font-weight: 500; }
 .publication-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; }
 .button { border-radius: 12px !important; font-weight: 600; height: auto; min-height: 2.8rem; padding: .55rem 1.15rem; transition: background .2s; }
 .button.is-dark { background: var(--text-primary); color: #fff; border: 1px solid var(--text-primary); }
