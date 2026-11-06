@@ -3,680 +3,281 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- Primary Meta Tags -->
-  <!-- TODO: Replace with your paper title and author names -->
-  <meta name="title" content="SyncTwin: Fast Digital Twin Construction and Synchronization for Safe Robotic Manipulation - Ruopeng Huang, Boyu Yang, Wenlong Gui, Jeremy Morgan, Erdem Biyik, Jiachen Li">
-  <!-- TODO: Write a compelling 150-160 character description of your research -->
-  <meta name="description" content="A digital twin framework for fast 3D reconstruction and real-time synchronization enabling safe robotic manipulation in dynamic, occluded environments.">
-  <!-- TODO: Add 5-10 relevant keywords for your research area -->
-  <meta name="keywords" content="robotics, hierarchical learning, vision-language-action models, demonstration decomposition, retrieval-based learning, visuomotor policy, machine learning, computer vision, AI">
-  <!-- TODO: List all authors -->
-  <meta name="author" content="Ruopeng Huang, Boyu Yang, Wenlong Gui, Jeremy Morgan, Erdem Biyik, Jiachen Li">
+  <title>SyncTwin: Fast Digital Twin Construction and Synchronization for Safe Robotic Manipulation</title>
+  <meta name="description" content="SyncTwin combines fast RGB-only 3D asset construction with continuous digital twin synchronization for collision-aware robotic manipulation under occlusion.">
+  <meta name="keywords" content="SyncTwin, digital twin, robotic manipulation, 3D reconstruction, real-to-sim, object tracking, collision avoidance, grasping">
+  <meta name="author" content="Ruopeng Huang, Boyu Yang, Wenlong Gui, Jeremy Morgan, Erdem Bıyık, Jiachen Li">
   <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
-  
-
-  <!-- Academic/Research Specific -->
+  <meta name="theme-color" content="#2563eb">
+  <link rel="canonical" href="https://sync-twin.github.io/">
   <meta name="citation_title" content="SyncTwin: Fast Digital Twin Construction and Synchronization for Safe Robotic Manipulation">
   <meta name="citation_author" content="Huang, Ruopeng">
   <meta name="citation_author" content="Yang, Boyu">
   <meta name="citation_author" content="Gui, Wenlong">
   <meta name="citation_author" content="Morgan, Jeremy">
-  <meta name="citation_author" content="Biyik, Erdem">
+  <meta name="citation_author" content="Bıyık, Erdem">
   <meta name="citation_author" content="Li, Jiachen">
-   <!-- <meta name="citation_publication_date" content="2026">
-  <meta name="citation_conference_title" content="Robotics: Science and Systems (RSS)">-->
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
-  
-  <!-- Additional SEO -->
-  <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  
-  <!-- Preconnect for performance -->
+  <meta name="citation_journal_title" content="IEEE Robotics and Automation Letters">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_pdf_url" content="https://sync-twin.github.io/static/pdfs/synctwin.pdf">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SyncTwin: Fast Digital Twin Construction and Synchronization">
+  <meta property="og:description" content="Fast RGB-only asset construction and continuous real-to-sim-to-real synchronization for safe robotic manipulation.">
+  <meta property="og:url" content="https://sync-twin.github.io/">
+  <meta property="og:image" content="https://sync-twin.github.io/static/images/paper/overview.png">
+  <meta property="og:image:alt" content="SyncTwin overview: digital twin construction, synchronization, and real-world manipulation">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="static/images/synctwin.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
-  <link rel="preconnect" href="https://documentcloud.adobe.com">
-  <link rel="preconnect" href="https://cdn.jsdelivr.net">
-
-
-  <!-- TODO: Replace with your paper title and authors -->
-  <title>SyncTwin: Fast Digital Twin Construction and Synchronization for Safe Robotic Manipulation - Ruopeng Huang, Boyu Yang, Wenlong Gui, Jeremy Morgan, Erdem Biyik, Jiachen Li | Academic Research</title>
-  <!-- Favicon and App Icons -->
-  <link rel="icon" type="image/x-icon" href="static/images/tasl.ico">
-  <link rel="apple-touch-icon" href="static/images/tasl.ico">
-  
-  <!-- Critical CSS - Load synchronously -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
-  
-  <!-- Non-critical CSS - Load asynchronously -->
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-  <!-- Fallback for browsers that don't support preload -->
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  </noscript>
-  
-  <!-- Fonts - Optimized loading -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Defer non-critical JavaScript -->
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
-  
-  <!-- Structured Data for Academic Papers -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
     "headline": "SyncTwin: Fast Digital Twin Construction and Synchronization for Safe Robotic Manipulation",
-    "description": "A digital twin framework for fast 3D reconstruction and real-time synchronization enabling safe robotic manipulation in dynamic, occluded environments.",
+    "description": "Fast RGB-only 3D asset construction and continuous digital twin synchronization for collision-aware robotic manipulation in dynamic, partially occluded environments.",
     "author": [
-      {
-        "@type": "Person",
-        "name": "Ruopeng Huang",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "University of Southern California"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "Boyu Yang",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "University of Southern California"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "Wenlong Gui",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "University of Southern California"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "Jeremy Morgan",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "University of Southern California"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "Erdem Biyik",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "University of Southern California"
-        }
-      },
-      {
-        "@type": "Person",
-        "name": "Jiachen Li",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "University of California, Riverside"
-        }
-      }
+      {"@type": "Person", "name": "Ruopeng Huang", "affiliation": {"@type": "CollegeOrUniversity", "name": "University of California, Los Angeles", "url": "https://www.ucla.edu/"}},
+      {"@type": "Person", "name": "Boyu Yang", "affiliation": {"@type": "CollegeOrUniversity", "name": "University of Southern California", "url": "https://www.usc.edu/"}},
+      {"@type": "Person", "name": "Wenlong Gui", "affiliation": {"@type": "CollegeOrUniversity", "name": "University of Southern California", "url": "https://www.usc.edu/"}},
+      {"@type": "Person", "name": "Jeremy Morgan", "affiliation": {"@type": "CollegeOrUniversity", "name": "University of Southern California", "url": "https://www.usc.edu/"}},
+      {"@type": "Person", "name": "Erdem Bıyık", "affiliation": {"@type": "CollegeOrUniversity", "name": "University of Southern California", "url": "https://www.usc.edu/"}},
+      {"@type": "Person", "name": "Jiachen Li", "affiliation": {"@type": "CollegeOrUniversity", "name": "Georgia Institute of Technology", "url": "https://www.gatech.edu/"}}
     ],
-    "datePublished": "2026-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": ""
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["robotics", "hierarchical learning", "vision-language-action models", "demonstration decomposition", "machine learning", "computer vision"],
-    "abstract": "To enable robots to achieve long-horizon tasks, recent hierarchical vision-language-action (VLAs) frameworks typically employ vision-language model (VLM)-based planners to decompose complex manipulation tasks into simpler sub-tasks that low-level visuomotor policies can easily handle. To finetune the VLM planner and let it learn to decompose the target task, a few human demonstrations are segmented into sub-tasks by either human annotation or heuristic rules. The heuristic sub-tasks can deviate significantly from the training data of the visuomotor policy, which degrades task performance. To address these issues, we propose a Retrieval-based Demonstration Decomposer (SyncTwin) that automatically decomposes demonstrations into sub-tasks by aligning the visual features of decomposed sub-task intervals with the training data of low-level visuomotor policies to fully exploit its capability.",
-    "citation": "@inproceedings{huang2026SyncTwin, title={SyncTwin: Fast Digital Twin Construction and Synchronization for Safe Robotic Manipulation}, author={Huang, Ruopeng and Yang, Boyu and Gui, Wenlong and Morgan, Jeremy and Biyik, Erdem and Li, Jiachen}, booktitle={Proceedings of Robotics: Science and Systems (RSS)}, year={2026}}",
-    "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
-    "mainEntity": {
-      "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
-    },
-    "about": [
-      {
-        "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
-      },
-      {
-        "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
-      }
-    ]
-  }
-  </script>
-  
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "University of California, Riverside",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/tasl.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
-    ]
+    "isPartOf": {"@type": "Periodical", "name": "IEEE Robotics and Automation Letters"},
+    "url": "https://sync-twin.github.io/",
+    "image": "https://sync-twin.github.io/static/images/paper/overview.png",
+    "encoding": {"@type": "MediaObject", "contentUrl": "https://sync-twin.github.io/static/pdfs/synctwin.pdf", "encodingFormat": "application/pdf"},
+    "sameAs": "https://arxiv.org/abs/2601.09920",
+    "keywords": ["digital twin", "robotic manipulation", "3D reconstruction", "object tracking", "collision avoidance"],
+    "isAccessibleForFree": true
   }
   </script>
 </head>
 <body>
-
-
-  <!-- Scroll to Top Button -->
-  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- More Works Link -->
-  <div style="position: fixed; top: 20px; right: 20px; z-index: 1000;">
-    <a href="https://tasl.ucr.edu/publications/" target="_blank"
-       class="external-link button is-normal is-rounded is-primary"
-       style="font-weight: 500;">
-      <span class="icon">
-        <i class="fas fa-flask"></i>
-      </span>
-      <span>More Works</span>
-    </a>
-  </div>
-
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <button class="scroll-to-top" type="button" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">↑</button>
   <main id="main-content">
-  <section class="hero">
-    <div class="hero-body">
+    <section class="hero publication-header">
+      <div class="hero-body">
+        <div class="container is-max-widescreen has-text-centered">
+          <h1 class="title is-2 publication-title">SyncTwin: Fast Digital Twin Construction and Synchronization for Safe Robotic Manipulation</h1>
+          <p class="publication-venue">IEEE Robotics and Automation Letters (RA-L), 2026 (Accepted)</p>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="https://huangruopeng.github.io/" target="_blank" rel="noopener noreferrer">Ruopeng Huang</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="index.html">Boyu Yang</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="index.html">Wenlong Gui</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://jeremymorgan.io/" target="_blank" rel="noopener noreferrer">Jeremy Morgan</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://ebiyik.github.io/" target="_blank" rel="noopener noreferrer">Erdem Bıyık</a><sup>2</sup>,</span>
+            <span class="author-block"><a href="https://jiachenli94.github.io/" target="_blank" rel="noopener noreferrer">Jiachen Li</a><sup>3,†</sup></span>
+          </div>
+          <div class="affiliations">
+            <span><sup>1</sup><a href="https://www.ucla.edu/" target="_blank" rel="noopener noreferrer">University of California, Los Angeles (UCLA)</a></span>
+            <span><sup>2</sup><a href="https://www.usc.edu/" target="_blank" rel="noopener noreferrer">University of Southern California (USC)</a></span>
+            <span><sup>3</sup><a href="https://www.gatech.edu/" target="_blank" rel="noopener noreferrer">Georgia Institute of Technology (Georgia Tech)</a></span>
+          </div>
+          <p class="author-note"><sup>†</sup>Corresponding author: <a href="mailto:jiachen_li@gatech.edu">Jiachen Li</a>. Ruopeng Huang completed this work during an internship at the Trustworthy Autonomous Systems Laboratory.</p>
+          <div class="publication-links">
+            <a class="button is-dark is-rounded" href="static/pdfs/synctwin.pdf" target="_blank" rel="noopener noreferrer">Paper (latest PDF)</a>
+            <a class="button is-dark is-rounded" href="https://arxiv.org/abs/2601.09920" target="_blank" rel="noopener noreferrer">arXiv</a>
+            <a class="button is-dark is-rounded" href="#video">Video</a>
+            <span class="button is-static is-rounded" aria-disabled="true">Code (coming soon)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero teaser">
       <div class="container is-max-widescreen">
-        <div class="columns is-centered">
-          <div class="column is-12 has-text-centered">
-            <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-2 publication-title">SyncTwin: Fast Digital Twin Construction and Synchronization for Safe Robotic Manipulation<br><span class="is-size-4" style="font-style: italic; font-weight: 400; color: #666; font-family: 'Inter', sans-serif;"></span></h1>
-            <!--<div class="is-size-5" style="margin-top: 15px; margin-bottom: 20px;">
-              <span style="font-weight: 600;">Robotics: Science and Systems (RSS) 2026</span>
-            </div> -->
-            <div class="is-size-5 publication-authors">
-              <!-- TODO: Replace with your paper authors and their personal links -->
-              <span class="author-block">
-                <a href="https://huangruopeng.github.io/" target="_blank">Ruopeng Huang</a><sup>1,2</sup>,</span>
-                <span class="author-block">
-                  <a href="#" target="_blank">Boyu Yang</a><sup>2</sup>,</span>
-                  <span class="author-block">
-                    <a href="#" target="_blank">Wenlong Gui</a><sup>2</sup>,</span>
-                  <span class="author-block">
-                    <a href="http://jeremymorgan.io/" target="_blank">Jeremy Morgan</a><sup>2</sup>,</span>
-                  <span class="author-block">
-                    <a href="https://ebiyik.github.io/" target="_blank">Erdem Biyik</a><sup>2</sup>,</span>
-                  <span class="author-block">
-                    <a href="https://jiachenli94.github.io/" target="_blank">Jiachen Li</a><sup>1*</sup>
-                  </span>
-                  </div>
-
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block"><sup>1</sup>University of California, Riverside &nbsp;&nbsp; <sup>2</sup>University of Southern California</span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding author</small></span>
-                    <br>
-                    <span class="author-block" style="display: flex; align-items: center; justify-content: center; gap: 8px;">
-                      <img src="static/images/tasl.svg" alt="TASL Lab Logo" style="height: 20px; width: auto;">
-                      <a href="https://tasl.ucr.edu/" target="_blank" style="font-weight: 500; color: #2563eb; text-decoration: underline;">
-                        Trustworthy Autonomous Systems Laboratory (TASL)
-                      </a>
-                    </span>
-                  </div>
-
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                      <span class="link-block">
-                        <a href="https://arxiv.org/abs/2601.09920"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
-
-                  <span class="link-block">
-                    <a href="#"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code (coming soon)</span>
-                  </a>
-                </span>
-            </div>
-          </div>
+        <div class="hero-body">
+          <figure class="paper-figure overview-figure">
+            <img src="static/images/paper/overview.webp" alt="SyncTwin builds object assets, synchronizes a digital twin with the real scene, and supports obstacle avoidance, target following, and grasping." fetchpriority="high" width="2200" height="1258">
+          </figure>
+          <p class="teaser-summary">SyncTwin turns a few RGB images into reusable 3D object assets, then continuously updates their geometry and poses in simulation. The synchronized digital twin closes a real-to-sim-to-real loop for manipulation in dynamic, partially occluded scenes.</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-
-
-
-<!-- 1. Hero  -->
-<section class="hero teaser">
-  <div class="container is-max-widescreen">
-    <div class="hero-body">
-      <img
-      src="static/images/overview.png"
-      alt="Overview of SyncTwin framework"
-      style="
-        display: block;
-        margin: 0 auto 18px auto;
-        max-width: 900px;
-        width: 80%;
-        height: auto;
-      "
-    >
-
-      <!-- General  -->
-      
-      <p class="subtitle has-text-justified" style="max-width:900px; margin: 0 auto 18px auto;">
-       We will introduce SyncTwin, a novel framework for fast digital-twin construction and real-time synchronization designed for safe robotic manipulation in dynamic, occluded environments. We develop fast RGB-only reconstruction, real-time tracking, and MPC into a synchronized digital twin for safe execution in dynamic, occluded environments. 
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- 2. YouTube  -->
-<section class="section">
-  <div class="container is-max-widescreen">
-    <div class="columns is-centered">
-      <div class="column is-three-quarters">
+    <section class="section" id="video">
+      <div class="container research-content">
         <h2 class="title is-4 has-text-centered">Video</h2>
-        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); margin-bottom: 18px;">
-          <!--  video id -->
-          <iframe
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 8px;"
-            src="https://www.youtube.com/embed/vbVTZYMYg38"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-          </iframe>
-        </div>
-        <p class="has-text-centered" style="color:#666; font-size:0.95rem;">video demo</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 3. Abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-widescreen">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-         <div id="motivation-media" style="text-align:center; margin-bottom: 20px;">
-        <video
-          autoplay
-          loop
-          muted
-          playsinline
-          preload="metadata"
-          poster="static/images/intro_poster.png"
-          style="max-width: 900px; width: 80%; height: auto;
-                border-radius: 8px;
-                box-shadow: 0 4px 16px rgba(0,0,0,0.1);"
-        >
-          <source src="static/videos/intro.mp4" type="video/mp4">
-        </video>
-      </div>
-
-        <div class="content has-text-justified" style="max-width:900px; margin: 0 auto;">
-
-          <p>
-            Accurate and safe robotic manipulation under dynamic and visually occluded conditions remains a core challenge in real-world deployment. We introduce SyncTwin, a novel digital twin framework that unifies fast 3D scene reconstruction and real-to-sim synchronization for robust and safety-aware robotic manipulation in such environments. In the offline stage, we employ VGGT to rapidly reconstruct object-level 3D assets from RGB images, forming a reusable geometry library. During execution, SyncTwin continuously synchronizes the digital twin by tracking real-world object states via point cloud segmentation updates and aligning them through colored-ICP registration. The synchronized twin enables motion planners to compute collision-free and dynamically feasible trajectories in simulation, which are safely executed on the real robot through a closed real-to-sim-to-real loop. Experiments in dynamic and occluded scenes show that SyncTwin improves manipulation performance and motion safety, demonstrating the effectiveness of digital twin synchronization for real-world robotic execution.
-          </p>
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/KvjN1HzY8wg" title="SyncTwin project video: digital twin construction and safe robotic manipulation" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- 4. Motivation -->
-<section class="section">
-  <div class="container is-max-widescreen">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
+    <section class="section hero is-light" id="abstract">
+      <div class="container research-content">
+        <h2 class="title is-3 has-text-centered">Abstract</h2>
+        <video class="demo-video" autoplay loop muted playsinline controls preload="metadata" aria-label="SyncTwin real-world manipulation overview"><source src="static/videos/intro.mp4" type="video/mp4"></video>
+        <div class="content has-text-justified">
+          <p>Accurate and safe robotic manipulation under dynamic and visually occluded conditions remains a core challenge in real-world deployment. We introduce SyncTwin, a novel digital twin framework that unifies fast 3D scene reconstruction and real-to-sim synchronization for robust and safety-aware robotic manipulation in such environments. In the offline stage, we employ VGGT to rapidly reconstruct object-level 3D assets from RGB images, forming a reusable geometry library. During execution, SyncTwin continuously synchronizes the digital twin by tracking real-world object states and uses stored assets to complete partially observed geometry. The synchronized twin enables motion planners to compute collision-aware robot trajectories in simulation, with execution on the real robot closing the real-to-sim-to-real loop. Experiments in dynamic and occluded scenes show that SyncTwin improves manipulation performance and motion safety, demonstrating the effectiveness of digital twin synchronization for real-world robotic execution.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="motivation">
+      <div class="container research-content">
         <h2 class="title is-3 has-text-centered">Motivation</h2>
-
-     
-
-        <div id="motivation-media" style="text-align:center; margin-bottom: 20px;">
-        <video
-          autoplay
-          loop
-          muted
-          playsinline
-          preload="metadata"
-          poster="static/images/intro_poster.png"
-          style="max-width: 900px; width: 50%; height: auto;
-                border-radius: 8px;
-                box-shadow: 0 4px 16px rgba(0,0,0,0.1);"
-        >
-          <source src="static/videos/motivation.mp4" type="video/mp4">
-        </video>
-      </div>
-
-
-        <!-- Motivation -->
-        <div class="content has-text-justified" style="max-width:900px; margin: 0 auto;">
-          <p>
-           Real-world safe manipulation is challenged by partial single-view perception and dynamic scenes with moving objects and occlusions, causing planners to operate on incomplete or outdated geometry and resulting in unsafe execution.
-          </p>
-          <p>
-           To overcome these limitations, a robot needs a continuously synchronized digital twin, one that mirrors the real world in real time and provides accurate geometry for planning.
-          </p>
+        <video class="demo-video compact-video" autoplay loop muted playsinline controls preload="metadata" aria-label="Partial observations and moving obstacles challenge robotic manipulation"><source src="static/videos/motivation.mp4" type="video/mp4"></video>
+        <div class="content has-text-justified">
+          <p>A single camera often sees only fragments of an object, while moving obstacles quickly make a static scene model outdated. SyncTwin combines object-level geometry memories with continuous pose updates, giving the planner a more complete and current representation of the workspace.</p>
+          <p>The framework connects RGB-only asset construction, live RGB-D perception, and model-based planning. It uses robot models rather than robot-specific learned policies, so the design supports different manipulators without policy retraining.</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- 5. Method (Stage1 / Stage2 ) -->
-<section class="section">
-  <div class="container is-max-widescreen">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
+    <section class="section" id="method">
+      <div class="container research-content">
         <h2 class="title is-3 has-text-centered">Method</h2>
-
-        <!-- Method-->
-        <img
-        src="static/images/method.png"
-        alt="SyncTwin Method"
-        style="
-          display: block;
-          margin: 0 auto 18px auto;
-          max-width: 900px;
-          width: 80%;
-          height: auto;
-        "
-      >
-
-        
-        <div class="content has-text-justified" style="max-width:900px; margin: 0 auto 12px auto;">
-          <p>
-            The full SyncTwin method consists of two stages. 
-            Stage I performs fast digital-twin construction. generates scene-level point clouds from RGB inputs. Object-level point clouds are extracted via projection, segmentation, and denoising, then converted into lightweight meshes and stored in a memory bank.Stage II performs online synchronization. A RealSense provides live RGB-D frames. After segmentation, partial point clouds are aligned to the memory-bank assets using colored ICP, and the updated poses are sent to Isaac Sim for MPC planning, closing the loop.
-          </p>
-        </div>
-
-        <!-- Stage 1 -->
-        <h3 class="title is-4 has-text-centered">Stage I — Fast Digital Twin Construction</h3>
-       <div id="motivation-media" style="text-align:center; margin-bottom: 20px;">
-        <video
-          autoplay
-          loop
-          muted
-          playsinline
-          preload="metadata"
-          poster="static/images/intro_poster.png"
-          style="max-width: 900px; width: 80%; height: auto;
-                border-radius: 8px;
-                box-shadow: 0 4px 16px rgba(0,0,0,0.1);"
-        >
-          <source src="static/videos/method-stage1.mp4" type="video/mp4">
-        </video>
-      </div>
-
-        <div class="content has-text-justified" style="max-width:900px; margin: 0 auto 14px auto;">
-          <p>
-            Here is a closer look at Stage I. VGGT generates a scene point cloud, then we detect projection intersections and segment object regions, but due to prediction error, the result still contains noise.
-            To remove this noise, we introduce a geometric sphere-expansion method that identifies opening edges and cleanly separates the supporting plane.
-            This produces clean point clouds, which we downsample, centralize, and finally convert into lightweight meshes stored in the memory bank.
-          </p>
-        </div>
-
-        <!-- Stage 2 -->
-        <h3 class="title is-4 has-text-centered">Stage II — Online Digital Twin Synchronization  </h3>
-       
-        <div id="motivation-media" style="text-align:center; margin-bottom: 20px;">
-        <video
-          autoplay
-          loop
-          muted
-          playsinline
-          preload="metadata"
-          style="max-width: 900px; width: 80%; height: auto;
-                border-radius: 8px;
-                box-shadow: 0 4px 16px rgba(0,0,0,0.1);"
-        >
-          <source src="static/videos/method-stage2.mp4" type="video/mp4">
-        </video>
-      </div>
-
-        <div class="content has-text-justified" style="max-width:900px; margin: 0 auto 6px auto;">
-          <p>
-            Stage II keeps the digital twin synchronized. We use a sliding-window memory to ensure temporally stable segmentation: the first frame saves an initial prompt, and subsequent frames update the memory representation.
-            Each incoming frame is encoded together with the memory features and decoded by SAM, producing consistent masks even under occlusions. The resulting masks support real-time object tracking.
-            The updated object states drive the MPC planner inside Isaac Sim, forming a continuous real-to-sim-to-real loop.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 6. Experiments / Results -->
-<section class="section">
-  <div class="container is-max-widescreen">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3 has-text-centered">Experiments & Results</h2>
-
-        <!-- EXPERIMENT 1 -->
-        <div style="margin-top: 18px;">
-          <h3 class="title is-4 has-text-centered">Experiment  — Fast 3D Assets Reconstruction</h3>
-
-      
-
-          <!-- Image -->
-          <div id="exp1-img" style="text-align:center; margin-bottom: 12px;">
-            <img src="static/images/exp-assets-construction.png" alt="Fast 3D reconstruction results" style="max-width: 900px; width: 80%; height: auto; border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,0.1);">
+        <div class="content has-text-justified"><p>SyncTwin consists of two stages: fast RGB-only construction of reusable object assets, followed by online tracking and geometry completion for continuous real-to-sim-to-real synchronization.</p></div>
+        <div class="research-content stage-content">
+          <h3 class="title is-4">Stage I — Fast Digital Twin Construction</h3>
+          <video class="demo-video" autoplay loop muted playsinline controls preload="metadata" aria-label="Stage I: reconstructing and extracting reusable 3D assets"><source src="static/videos/method-stage1.mp4" type="video/mp4"></video>
+          <div class="content has-text-justified">
+            <p>VGGT reconstructs a scene-level point cloud from a small set of RGB images. SAM2 generates masks from manually clicked points or detector-provided bounding boxes, and expanded multi-view masks compensate for camera-pose inaccuracies during projection. A geometric sphere-expansion procedure detects opening boundaries and removes support-plane noise. A marker of known physical dimensions provides metric scale alignment, and feature-aware mesh simplification produces lightweight, simulation-ready assets for the memory bank.</p>
           </div>
+          <h3 class="title is-4">Stage II — Online Digital Twin Synchronization</h3>
+          <video class="demo-video" autoplay loop muted playsinline controls preload="metadata" aria-label="Stage II: continuous object tracking and digital twin synchronization"><source src="static/videos/method-stage2.mp4" type="video/mp4"></video>
+          <div class="content has-text-justified">
+            <p>Streaming RGB-D observations drive temporally consistent segmentation and object-state updates. The tracking backend can use real-time point-cloud tracking with colored-ICP (RT-ICP), or FoundationPose when reference meshes and sufficient GPU memory are available. Known objects reuse complete memory-bank geometry; unseen objects retain a point-cloud branch with online collision-geometry generation.</p>
+            <p>Updated geometry and poses are streamed into Isaac Sim. GraspGen predicts grasp candidates, while cuRobo MPC replans collision-aware motions. The real robot executes the first action of each short-horizon plan, closing the real-to-sim-to-real loop.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Description / Metrics -->
-          <div class="content has-text-justified" style="max-width:900px; margin: 0 auto 18px auto;">
-     
-            <p>
-            We evaluate our fast 3D asset reconstruction across multiple baselines. As shown on the left, SyncTwin produces clean object geometry using only five to ten frames, while traditional methods such as Photogrammetry, 3D Gaussian Splatting, and Nerfstudio at least require 20 to 60 frames.
-            SyncTwin reconstructs mesh in 1 to 2 minutes, significantly faster than all baselines.
-            And our method preserves fine-grained geometric details (e.g., bear's ear shape remains well )
+    <section class="section" id="experiments">
+      <div class="container research-content">
+        <h2 class="title is-3 has-text-centered">Experiments &amp; Results</h2>
+        <p class="experiment-setup">Setup: Franka Panda · Intel RealSense D455 · iPhone 12 RGB capture · Isaac Sim 4.0 · cuRobo MPC · one RTX 4090. Scene synchronization runs asynchronously to the 10 Hz planning loop.</p>
+        <article class="experiment">
+          <h3 class="title is-4">Experiment — Fast 3D Asset Reconstruction</h3>
+          <video class="demo-video" autoplay loop muted playsinline controls preload="metadata" aria-label="Comparison of 3D asset reconstruction methods"><source src="static/videos/exp-assets-construction.mp4" type="video/mp4"></video>
+          <div class="content has-text-justified">
+            <p>SyncTwin generates usable object meshes from only 5–10 RGB images in approximately 1–2 minutes. Photogrammetry, 3D Gaussian Splatting, and Nerfstudio require more images and typically 4–8 minutes of processing. In the reported setup, the full workflow—including capture, upload, prompt initialization, and script launch—takes less than 5 minutes.</p>
+          </div>
+        </article>
 
-            </p>
-               <!-- Video -->
-            <div id="exp1-video" style="text-align:center; margin-bottom: 12px;">
-              <video
-                autoplay
-                loop
-                muted
-                playsinline
-                preload="metadata"
-                style="max-width: 900px; width: 80%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);"
-              >
-                <source src="static/videos/exp-assets-construction.mp4" type="video/mp4">
-              </video>
+        <article class="experiment">
+          <h3 class="title is-4">Experiment — Avoid Collision in the Real World</h3>
+          <video class="demo-video" autoplay loop muted playsinline controls preload="metadata" aria-label="Real-world obstacle avoidance comparison"><source src="static/videos/exp-avoid-collision1.mp4" type="video/mp4"></video>
+          <div class="content has-text-justified">
+            <p>We evaluate in-place obstacle rotation (SelfRot) and obstacles moving into the robot trajectory (EnterTraj), using four boxes and 20 trials per box per condition. SyncTwin uses RT-ICP. Stored geometry further improves results when objects are partially occluded.</p>
+          </div>
+          <video class="demo-video" autoplay loop muted playsinline controls preload="metadata" aria-label="Additional dynamic obstacle avoidance examples"><source src="static/videos/exp-avoid-collision2.mp4" type="video/mp4"></video>
+          <div class="content has-text-justified"><p>For unseen objects, SyncTwin achieves a weighted avoidance score of 85.5% for SelfRot (0 m/s translational speed), versus 50.3% with NVBlox. For EnterTraj at 0.2 m/s, the scores are 71.5% and 37.0%, respectively. Memory-bank geometry raises SyncTwin’s scores to 93.5% for SelfRot and 78.8% for EnterTraj at 0.2 m/s for seen objects. At 0.5 m/s, SyncTwin’s EnterTraj scores fall to 35.8% and 44.5% for unseen and seen objects, respectively.</p></div>
+          <details class="paper-details">
+            <summary>Detailed obstacle-avoidance results and scoring</summary>
+            <div class="details-content">
+          <div class="table-scroll" role="region" aria-label="Obstacle avoidance results" tabindex="0">
+            <table class="table is-fullwidth results-table">
+              <caption>Obstacle avoidance: weighted score (%) across four boxes, mean ± sample SD</caption>
+              <thead><tr><th scope="col">Method</th><th scope="col">Motion</th><th scope="col">Translation speed</th><th scope="col">Unseen objects</th><th scope="col">Seen objects</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">NVBlox</th><td>SelfRot</td><td>0 m/s</td><td>50.3 ± 15.1</td><td>—</td></tr>
+                <tr><th scope="row">NVBlox</th><td>EnterTraj</td><td>0.2 m/s</td><td>37.0 ± 20.4</td><td>—</td></tr>
+                <tr class="highlight-row"><th scope="row">SyncTwin</th><td>SelfRot</td><td>0 m/s</td><td>85.5 ± 4.2</td><td>93.5 ± 3.1</td></tr>
+                <tr class="highlight-row"><th scope="row">SyncTwin</th><td>EnterTraj</td><td>0.2 m/s</td><td>71.5 ± 5.4</td><td>78.8 ± 6.9</td></tr>
+                <tr><th scope="row">SyncTwin</th><td>EnterTraj</td><td>0.5 m/s</td><td>35.8 ± 20.1</td><td>44.5 ± 13.9</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="result-note">Weighted score = (full avoidances + 0.8 × edge avoidances) / trials × 100%. Edge avoidance allows slight contact without object displacement. Seen objects have memory-bank assets; unseen objects do not. SelfRot has zero translational speed while the obstacle rotates.</p>
             </div>
+          </details>
+        </article>
+
+        <article class="experiment">
+          <h3 class="title is-4">Experiment — Safe Grasping Under Single-View Occlusion</h3>
+          <video class="demo-video" autoplay loop muted playsinline controls preload="metadata" aria-label="Safe grasping examples under single-view occlusion"><source src="static/videos/exp-safe-grasp.mp4" type="video/mp4"></video>
+          <div class="content has-text-justified">
+            <p>Single-view point clouds can miss critical geometry, such as a cup handle, and produce colliding grasp candidates. Aligning the complete stored asset supplies that missing geometry and yields denser, more geometrically feasible grasps.</p>
           </div>
+        </article>
+
+        <details class="paper-details" id="tracking-results">
+          <summary>Tracking accuracy, runtime &amp; recovery</summary>
+          <div class="details-content">
+          <div class="content has-text-justified">
+            <p>We compare RT-ICP and FoundationPose on a box, cup, bottle, and ketchup bottle, using the same Stage I assets and RGB-D observations. Each object is translated by 15 cm along each Cartesian axis and rotated by 90° around roll, pitch, and yaw; each motion is repeated 50 times.</p>
+          </div>
+          <div class="table-scroll" role="region" aria-label="Pose accuracy comparison" tabindex="0">
+            <table class="table is-fullwidth results-table">
+              <caption>Normalized pose accuracy (%), mean ± sample SD across four objects</caption>
+              <thead><tr><th scope="col">Backend</th><th scope="col">Condition</th><th scope="col">Translation</th><th scope="col">Rotation</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">RT-ICP</th><td>Unoccluded</td><td>95.23 ± 0.74</td><td>84.85 ± 5.68</td></tr>
+                <tr><th scope="row">RT-ICP</th><td>Occluded</td><td>88.68 ± 2.81</td><td>76.88 ± 5.06</td></tr>
+                <tr class="highlight-row"><th scope="row">FoundationPose</th><td>Unoccluded</td><td>97.65 ± 0.71</td><td>94.35 ± 2.10</td></tr>
+                <tr class="highlight-row"><th scope="row">FoundationPose</th><td>Occluded</td><td>94.28 ± 2.04</td><td>91.60 ± 1.94</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="result-note">Normalized accuracy is 1 − translation error / 15 cm or 1 − angular error / 90°, expressed as a percentage.</p>
+          <div class="table-scroll" role="region" aria-label="Tracking runtime comparison" tabindex="0">
+            <table class="table is-fullwidth results-table">
+              <caption>Runtime and resource use for the two tracking backends</caption>
+              <thead><tr><th scope="col">Metric / configuration</th><th scope="col">RT-ICP</th><th scope="col">FoundationPose</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Four-object tracking, unoccluded (FPS)</th><td>3.43</td><td>11.57</td></tr>
+                <tr><th scope="row">Four-object GPU memory (GiB, mean ± SD / peak)</th><td>5.70 ± 0.50 / 6.10</td><td>7.70 ± 0.38 / 16.03</td></tr>
+                <tr><th scope="row">One seen object: observation-to-update (ms)</th><td>73.93 ± 9.74</td><td>25.09 ± 2.87</td></tr>
+                <tr><th scope="row">One seen object: scene update rate (Hz)</th><td>13.53</td><td>39.86</td></tr>
+                <tr><th scope="row">One seen + one unseen object: update time / rate (ms / Hz)</th><td>185.34 ± 21.67 / 5.40</td><td>Not applicable</td></tr>
+                <tr><th scope="row">Initialization / recovery time (ms)</th><td>214.12 ± 46.08</td><td>819.63 ± 46.35</td></tr>
+                <tr><th scope="row">One seen object: GPU memory (GiB, mean ± SD / peak)</th><td>5.59 ± 0.51 / 5.99</td><td>7.56 ± 0.37 / 15.86</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="result-note">Observation-to-update latency excludes asynchronous motion planning. The unseen-object RT-ICP configuration includes online V-HACD collision-geometry generation. Initialization/recovery also includes detection and segmentation; FoundationPose additionally re-registers the mesh.</p>
+          <div class="content has-text-justified">
+            <p>FoundationPose offers higher pose accuracy and faster tracking when reference assets and GPU memory are available. RT-ICP uses less memory, recovers more quickly after an object returns to view, and retains support for completely unseen objects without stored assets.</p>
+          </div>
+          </div>
+        </details>
+        <details class="paper-details" id="ablations">
+          <summary>Mask expansion &amp; denoising ablation</summary>
+          <div class="details-content content has-text-justified"><p>Without mask expansion, inconsistent multi-view projections remove valid object geometry. Without support-plane denoising, table points contaminate the reconstructed mesh. Both components are needed to extract complete, clean object assets.</p></div>
+        </details>
+        <details class="paper-details" id="limitations">
+          <summary>Limitations &amp; future directions</summary>
+          <div class="details-content">
+        <div class="content has-text-justified">
+          <p>Faster obstacle motion remains challenging: at 0.5 m/s, perception latency, the planner’s lack of obstacle-motion prediction, and execution lag reduce avoidance performance. Abrupt accelerations and direction changes were not explicitly evaluated and would further challenge the reactive loop. Support-plane denoising can also fail for tall or weakly supported objects such as wine glasses.</p>
+          <p>Future work includes integrating asset construction into online synchronization, appearance-level consistency for visuomotor learning, distributed or multi-GPU processing, and probabilistic obstacle-state modeling for uncertainty-aware planning.</p>
         </div>
-
-        <hr>
-
-        <!-- EXPERIMENT 2 -->
-        <div style="margin-top: 18px;">
-          <h3 class="title is-4 has-text-centered">Experiment — Avoid Collision in the Real World</h3>
-
-          <!-- Two videos side-by-side OR stacked on mobile -->
-          <div class="two-gif-row" style="margin-bottom: 12px;">
-            <div id="exp2-video1" class="gif-placeholder" style="padding: 0; border: none; box-shadow:none; display:flex; align-items:center; justify-content:center;">
-              <video
-                autoplay
-                loop
-                muted
-                playsinline
-                preload="metadata"
-                style="max-width: 100%; width: 80%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);"
-              >
-                <source src="static/videos/exp-avoid-collision1.mp4" type="video/mp4">
-              </video>
-
-             
-            
-      
-            </div>
-
-               <!-- Description / Metrics -->
-          <div class="content has-text-justified" style="max-width:900px; margin: 0 auto 18px auto;">      
-             <p>
-              We next evaluate dynamic obstacle avoidance in real-world scenarios. On the left, using NVBlox, the robot often fails to avoid collisions because voxel-based geometry is incomplete and updates slowly. On the right, SyncTwin maintains accurate object geometry through real-time alignment, enabling the robot to safely avoid obstacles, even when they move during execution.
-            </p>
-           
           </div>
-
-          
-
-            <div id="exp2-video2" class="gif-placeholder" style="padding: 0; border: none; box-shadow:none; display:flex; align-items:center; justify-content:center;">
-              <video
-                autoplay
-                loop
-                muted
-                playsinline
-                preload="metadata"
-                style="max-width: 100%; width: 80%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);"
-              >
-                <source src="static/videos/exp-avoid-collision2.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-
-          <!-- Supporting Image -->
-          <div id="exp2-img" style="text-align:center; margin-bottom: 12px;">
-            <img src="static/images/exp-avoid-collision-result.png" alt="Avoiding collisions in real-world scenarios" style="max-width: 720px; width: 80%; height: auto; border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,0.1);">
-          </div>
-
-          <!-- Description / Metrics -->
-          <div class="content has-text-justified" style="max-width:900px; margin: 0 auto 18px auto;">      
-             <p>
-             Quantitatively, SyncTwin substantially outperforms NVBlox. For unseen obstacles, we achieve up to 85.5% success in the self-rotation condition, and 71.5% in the enter-trajectory condition, compared to NVBlox at 50.3% and 37.0%. For seen objects stored in the memory bank, having full object geometry leads to even stronger results: SyncTwin reaches 93.5% and 78.8% success, respectively. These results validate the importance of using accurate, asset-level geometry for safety-critical planning.
-
-            </p>
-           
-          </div>
-        </div>
-
-        <hr>
-
-        <!-- EXPERIMENT 3 -->
-        <div style="margin-top: 18px;">
-          <h3 class="title is-4 has-text-centered">Experiment — Safe Grasping Under Single-View Occlusion</h3>
-
-          <!-- Video -->
-          <div id="exp3-video" style="text-align:center; margin-bottom: 12px;">
-            <video
-              autoplay
-              loop
-              muted
-              playsinline
-              preload="metadata"
-              style="max-width: 900px; width: 80%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);"
-            >
-              <source src="static/videos/exp-safe-grasp.mp4" type="video/mp4">
-            </video>
-          </div>
-
-          <!-- Image -->
-          <div id="exp3-img" style="text-align:center; margin-bottom: 12px;">
-            <img src="static/images/exp-safe-grasp-result.png" alt="Safe grasping under occlusion" style="max-width: 900px; width: 60%; height: auto; border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,0.1);">
-          </div>
-
-          <!-- Description / Metrics -->
-          <div class="content has-text-justified" style="max-width:900px; margin: 0 auto 18px auto;">
-            <p>
-            Finally, we demonstrate safe grasping under single-view occlusion. Without geometry completion, the robot sees only partial point clouds and often generates unsafe or failing grasps, especially for asymmetric objects such as cups with handles. With SyncTwin, the complete 3D asset from the memory bank replaces the partial observation, leading to more stable grasp candidates and significantly higher success rates. As shown in the table, performance improves by over 20% on challenging objects, enabling reliable grasping in real-world scenes.
-
-            </p>
-           
-          </div>
-        </div>
-
+        </details>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-
-
-
-
-
-
-
-
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <div class="bibtex-header">
-        <h2 class="title">BibTeX</h2>
-        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
-        </button>
-      </div>
-      <pre id="bibtex-code"><code>@article{huang2026synctwin,
-  title={SyncTwin: Fast Digital Twin Construction and Synchronization for Safe Robotic Manipulation},
-  author={Huang, Ruopeng and Yang, Boyu and Gui, Wenlong and Morgan, Jeremy and Biyik, Erdem and Li, Jiachen},
-  journal={arXiv preprint arXiv:2601.09920},
-  year={2026}
+    <section class="section" id="BibTeX">
+      <div class="container research-content content">
+        <div class="bibtex-header">
+          <h2 class="title is-3">BibTeX</h2>
+          <button class="copy-bibtex-btn" type="button" onclick="copyBibTeX()" title="Copy BibTeX to clipboard"><span class="copy-text" aria-live="polite">Copy</span></button>
+        </div>
+        <pre id="bibtex-code"><code>@article{huang2026synctwin,
+  title={{SyncTwin}: Fast Digital Twin Construction and Synchronization for Safe Robotic Manipulation},
+  author={Huang, Ruopeng and Yang, Boyu and Gui, Wenlong and Morgan, Jeremy and B{\i}y{\i}k, Erdem and Li, Jiachen},
+  journal={IEEE Robotics and Automation Letters},
+  year={2026},
+  note={Accepted for publication}
 }</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
-
-
-
-
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
-        </div>
       </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="container research-content content has-text-centered">
+      <p>SyncTwin · UCLA · USC · Georgia Tech</p>
+      <p>Page adapted from the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener noreferrer">Academic Project Page Template</a> and <a href="https://nerfies.github.io/" target="_blank" rel="noopener noreferrer">Nerfies</a>. Website licensed under <a rel="license noopener noreferrer" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.</p>
     </div>
-  </div>
-</footer>
-
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+  </footer>
+</body>
+</html>
