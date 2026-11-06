@@ -245,7 +245,13 @@
         </details>
         <details class="paper-details" id="ablations">
           <summary>Mask expansion &amp; denoising ablation</summary>
-          <div class="details-content content has-text-justified"><p>Without mask expansion, inconsistent multi-view projections remove valid object geometry. Without support-plane denoising, table points contaminate the reconstructed mesh. Both components are needed to extract complete, clean object assets.</p></div>
+          <div class="details-content">
+            <figure class="paper-figure">
+              <img src="static/images/paper/ablation1.webp" alt="Left: SyncTwin reconstructs a complete, clean object mesh. Middle: without mask expansion, object geometry is missing. Right: without denoising, support-plane points contaminate the mesh." loading="lazy" width="2200" height="880">
+              <figcaption>Left: full pipeline. Middle: without mask expansion. Right: without support-plane denoising.</figcaption>
+            </figure>
+            <div class="content has-text-justified"><p>Without mask expansion, inconsistent multi-view projections remove valid object geometry. Without support-plane denoising, table points contaminate the reconstructed mesh. Both components are needed to extract complete, clean object assets.</p></div>
+          </div>
         </details>
         <details class="paper-details" id="limitations">
           <summary>Limitations &amp; future directions</summary>

@@ -11,7 +11,7 @@ Open `index.html` in a browser, or serve the repository with a local static serv
 - `index.html`: paper content, author affiliations, results, metadata, and citation.
 - `static/css/index.css`: responsive layout and page styling.
 - `static/js/index.js`: citation copying, scroll button, and video playback.
-- `static/images/paper/`: figure exports from the final manuscript, plus a PNG social preview. The page displays the overview only; method and experiment demonstrations use videos to avoid duplicate media.
+- `static/images/paper/`: figure exports from the final manuscript, plus a PNG social preview. The page displays the overview and mask expansion / denoising ablation figure; method and experiment demonstrations use videos to avoid duplicate media.
 - `static/pdfs/synctwin.pdf`: a byte-for-byte copy of `SyncTwin-Overleaf/RA_L__SyncTwin.pdf`.
 - `static/videos/`: existing supplementary demonstrations.
 
