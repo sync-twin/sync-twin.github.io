@@ -2,7 +2,7 @@
 
 Static project page for **SyncTwin: Fast Digital Twin Construction and Synchronization for Safe Robotic Manipulation**, accepted to IEEE Robotics and Automation Letters (RA-L), 2026.
 
-Author affiliations follow the final manuscript: Ruopeng Huang — UCLA; Boyu Yang, Wenlong Gui, Jeremy Morgan, and Erdem Bıyık — USC; Jiachen Li — Georgia Tech.
+Website author affiliations: Ruopeng Huang — UCLA and USC; Boyu Yang, Wenlong Gui, Jeremy Morgan, and Erdem Bıyık — USC; Jiachen Li — Georgia Tech. The TASL link points to https://tasl-lab.github.io/.
 
 ## Edit and preview
 
