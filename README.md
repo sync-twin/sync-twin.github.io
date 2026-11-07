@@ -21,7 +21,7 @@ The content source is `SyncTwin-Overleaf/main.tex`; `highlight.tex` and `Respons
 
 Avoidance scores include edge-contact outcomes with weight 0.8. Tracking FPS, scene-update rate, and planning frequency refer to different configurations and are labeled separately. Publication volume, page numbers, and DOI are omitted until available.
 
-The citation is an accepted RA-L journal article, with the journal name, year, and acceptance note. Boyu Yang and Wenlong Gui retain homepage placeholder links pointing to this project's `index.html`, as in the original page; these are not verified personal websites.
+The citation uses the RA-L journal article format, with the title, authors, journal name, and year. Boyu Yang and Wenlong Gui retain homepage placeholder links pointing to this project's `index.html`, as in the original page; these are not verified personal websites.
 
 Content has been checked against the final `main.tex`: the abstract is verbatim; method and discussion text are condensed summaries; obstacle-avoidance, pose-accuracy, and runtime values follow Tables I–III. SelfRot has zero translational speed, while EnterTraj is evaluated at 0.2 and 0.5 m/s. Metric scale alignment uses a marker of known dimensions.
 
